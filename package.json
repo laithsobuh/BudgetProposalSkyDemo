@@ -1,0 +1,33 @@
+{
+  "name": "budget-proposal",
+  "version": "1.0.0",
+  "description": "Budget proposal system for Sharjah Private Education Authority",
+  "main": "index.html",
+  "scripts": {
+    "dev": "live-server --port=3000 --open=/index.html",
+    "start": "live-server --port=3000 --open=/index.html",
+    "build": "echo 'No build process needed for static files'",
+    "test": "echo 'No tests specified'"
+  },
+  "keywords": [
+    "budget",
+    "proposal",
+    "education",
+    "sharjah"
+  ],
+  "author": "Sharjah Private Education Authority",
+  "license": "MIT",
+  "devDependencies": {
+    "live-server": "^1.2.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "."
+  },
+  "bugs": {
+    "url": "."
+  },
+  "homepage": "."
+}
+
+

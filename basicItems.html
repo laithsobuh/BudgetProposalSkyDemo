@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>البنود الأساسية - هيئة الشارقة للتعليم الخاص</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="#" class="navbar-logo">
+                <div class="logo-graphic">
+                    <div class="logo-hexagon">
+                        <div class="logo-shape"></div>
+                        <div class="logo-shape"></div>
+                        <div class="logo-shape"></div>
+                        <div class="logo-shape"></div>
+                        <div class="logo-shape"></div>
+                        <div class="logo-shape"></div>
+                    </div>
+                </div>
+                <div class="logo-text">
+                    <div class="logo-text-arabic">هيئة الشارقة للتعليم الخاص</div>
+                    <div class="logo-divider"></div>
+                    <div class="logo-text-english">SHARJAH PRIVATE EDUCATION AUTHORITY</div>
+                </div>
+            </a>
+
+            <div class="navbar-menu" id="navbarMenu">
+                <a href="index.html" class="nav-link">
+                    <i class="fas fa-home"></i>
+                    <span>الرئيسية</span>
+                </a>
+                <a href="basicItems.html" class="nav-link active">
+                    <i class="fas fa-list-alt"></i>
+                    <span>البنود الأساسية</span>
+                </a>
+                <a href="details.html" class="nav-link">
+                    <i class="fas fa-file-alt"></i>
+                    <span>تفاصيل البند</span>
+                </a>
+                <a href="job.html" class="nav-link">
+                    <i class="fas fa-briefcase"></i>
+                    <span>الوظائف المستحدثة</span>
+                </a>
+                <a href="#" class="nav-link" onclick="logout()">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>تسجيل الخروج</span>
+                </a>
+            </div>
+
+            <button class="navbar-toggle" id="navbarToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <style>
+        /* تنسيق خاص بصفحة البنود الأساسية */
+        .items-container {
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .items-header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(26, 35, 126, 0.1);
+        }
+
+        .items-header h1 {
+            color: #1a237e;
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .items-header p {
+            color: #666;
+            font-size: 18px;
+        }
+
+        .items-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .item-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 8px 25px rgba(26, 35, 126, 0.1);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .item-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(26, 35, 126, 0.2);
+        }
+
+        .item-card h3 {
+            color: #1a237e;
+            font-size: 20px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .item-card h3 i {
+            color: #3949ab;
+            font-size: 18px;
+        }
+
+        .item-card p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .item-status {
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .status-active {
+            background: rgba(76, 175, 80, 0.1);
+            color: #4CAF50;
+        }
+
+        .status-pending {
+            background: rgba(255, 193, 7, 0.1);
+            color: #FFC107;
+        }
+
+        .status-completed {
+            background: rgba(33, 150, 243, 0.1);
+            color: #2196F3;
+        }
+
+        .item-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+        }
+
+        .item-date {
+            color: #999;
+            font-size: 14px;
+        }
+
+        .item-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #1a237e, #3949ab);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(26, 35, 126, 0.3);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.9);
+            color: #1a237e;
+            border: 1px solid #1a237e;
+        }
+
+        .btn-secondary:hover {
+            background: #1a237e;
+            color: white;
+        }
+
+        .stats-section {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 25px rgba(26, 35, 126, 0.1);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 20px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, rgba(26, 35, 126, 0.05), rgba(57, 73, 171, 0.05));
+        }
+
+        .stat-number {
+            font-size: 32px;
+            font-weight: 700;
+            color: #1a237e;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            color: #666;
+            font-size: 14px;
+        }
+
+        /* تنسيق الجدول */
+        .table-container {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 25px rgba(26, 35, 126, 0.1);
+            overflow-x: auto;
+        }
+
+        .items-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-family: 'Cairo', sans-serif;
+            direction: rtl;
+        }
+
+        .items-table thead th {
+            background: linear-gradient(135deg, #1a237e, #3949ab);
+            color: white;
+            padding: 15px 12px;
+            text-align: right;
+            font-weight: 600;
+            font-size: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+        }
+
+        .items-table thead th i {
+            margin-left: 8px;
+            font-size: 12px;
+            opacity: 0.8;
+        }
+
+        .items-table tbody td {
+            padding: 12px;
+            border: 1px solid #e0e0e0;
+            text-align: right;
+            font-size: 13px;
+            line-height: 1.5;
+            vertical-align: top;
+        }
+
+        .items-table tbody tr:nth-child(even) {
+            background-color: rgba(26, 35, 126, 0.02);
+        }
+
+        .items-table tbody tr:hover {
+            background-color: rgba(26, 35, 126, 0.05);
+            transition: background-color 0.3s ease;
+        }
+
+        .details-link {
+            color: #1a237e;
+            text-decoration: underline;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .details-link:hover {
+            color: #3949ab;
+        }
+
+        /* تنسيق الأعمدة */
+        .items-table th:nth-child(1),
+        .items-table td:nth-child(1) {
+            width: 120px;
+            text-align: center;
+        }
+
+        .items-table th:nth-child(2),
+        .items-table td:nth-child(2) {
+            width: 200px;
+        }
+
+        .items-table th:nth-child(3),
+        .items-table td:nth-child(3) {
+            width: 400px;
+        }
+
+        .items-table th:nth-child(4),
+        .items-table td:nth-child(4) {
+            width: 180px;
+        }
+
+        .items-table th:nth-child(5),
+        .items-table td:nth-child(5) {
+            width: 100px;
+            text-align: center;
+        }
+
+        .items-table th:nth-child(6),
+        .items-table td:nth-child(6) {
+            width: 100px;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .items-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .items-header h1 {
+                font-size: 24px;
+            }
+
+            .item-meta {
+                flex-direction: column;
+                gap: 10px;
+                align-items: stretch;
+            }
+
+            .table-container {
+                padding: 15px;
+                margin: 0 10px 20px 10px;
+            }
+
+            .items-table {
+                font-size: 12px;
+            }
+
+            .items-table thead th,
+            .items-table tbody td {
+                padding: 8px 6px;
+                font-size: 11px;
+            }
+
+            .items-table th:nth-child(3),
+            .items-table td:nth-child(3) {
+                width: 200px;
+            }
+        }
+    </style>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="#" class="navbar-logo">
+                <div class="logo-graphic">
+                    <div class="logo-hexagon">
+                        <div class="logo-shape"></div>
+                        <div class="logo-shape"></div>
+                        <div class="logo-shape"></div>
+                        <div class="logo-shape"></div>
+                        <div class="logo-shape"></div>
+                        <div class="logo-shape"></div>
+                    </div>
+                </div>
+                <div class="logo-text">
+                    <div class="logo-text-arabic">هيئة الشارقة للتعليم الخاص</div>
+                    <div class="logo-divider"></div>
+                    <div class="logo-text-english">SHARJAH PRIVATE EDUCATION AUTHORITY</div>
+                </div>
+            </a>
+
+            <div class="navbar-menu" id="navbarMenu">
+
+                <a href="basicItems.html" class="nav-link">
+                    <i class="fas fa-list-alt"></i>
+                    <span>البنود الأساسية</span>
+                </a>
+                <a href="job.html" class="nav-link active">
+                    <i class="fas fa-briefcase"></i>
+                    <span>الوظائف المستحدثة</span>
+                </a>
+
+            </div>
+
+            <button class="navbar-toggle" id="navbarToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <div class="sidenav" id="sidenav">
+        <div class="sidenav-header">
+            <div class="sidenav-logo">
+                <i class="fas fa-chart-line"></i>
+            </div>
+            <h3>نظام الميزانية</h3>
+        </div>
+
+        <nav class="sidenav-menu">
+
+            <a href="job.html" class="nav-item active">
+                <i class="fas fa-briefcase"></i>
+                <span>الوظائف المستحدثة</span>
+            </a>
+            <a href="#" class="nav-item">
+                <i class="fas fa-chart-pie"></i>
+                <span>التقارير</span>
+            </a>
+            <a href="#" class="nav-item">
+                <i class="fas fa-users"></i>
+                <span>المستخدمين</span>
+            </a>
+            <a href="#" class="nav-item">
+                <i class="fas fa-cog"></i>
+                <span>الإعدادات</span>
+            </a>
+        </nav>
+
+        <div class="sidenav-footer">
+            <a href="#" class="nav-item">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>تسجيل الخروج</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Toggle Button -->
+    <button class="sidenav-toggle" id="sidenavToggle">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- Main Content -->
+    <div class="items-container">
+        <div class="items-header">
+            <h1><i class="fas fa-list-alt"></i> البنود الأساسية</h1>
+            <p>إدارة وتتبع جميع البنود الأساسية في نظام الميزانية</p>
+        </div>
+
+        <!-- Items Table -->
+        <div class="table-container">
+            <table class="items-table">
+                <thead>
+                    <tr>
+                        <th>
+                            <i class="fas fa-sort-down"></i>
+                            رقم البند
+                        </th>
+                        <th>
+                            <i class="fas fa-sort-down"></i>
+                            اسم البند
+                        </th>
+                        <th>
+                            <i class="fas fa-sort-down"></i>
+                            وصف البند
+                        </th>
+                        <th>
+                            <i class="fas fa-sort-down"></i>
+                            الإدارة المختصة بالبند
+                        </th>
+                        <th>
+                            <i class="fas fa-sort-down"></i>
+                            تفاصيل
+                        </th>
+                        <th>
+                            <i class="fas fa-sort-down"></i>
+                            المجموع
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>221101</td>
+                        <td>صيانة المباني والمرافق</td>
+                        <td>صيانة المصاعد ، والسلالم الكهربائية ، الأعمال الصحية ، والكهربائية ، وأعمال الدهانات
+                            والترميمات وأعمال النجارة والألمونيوم والأبواب والأقفال... إلخ وكافة أنواع الصيانة لجميع
+                            المباني والمرافق التابعة للوحدة الحكومية</td>
+                        <td>إدارة الخدمات المساندة</td>
+                        <td><a href="details.html" class="details-link">تفاصيل</a></td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>221103</td>
+                        <td>صيانة المكيفات</td>
+                        <td>صيانة المكيفات العادية والمركزية والوحدات المنفصلة سواء كانت وفقا لعقود مبرمة مع شركات
+                            متخصصة أو بأية طريقة أخرى أو عن طريق الورش التابعة وتشمل ) قطع الغيار ، تعبئة الغاز ، الغسيل
+                            ، عمل فتحات التكييف ، أجور عمال ، استبدال ضاغط ماكينة تبريد المكيف ، مولد كهربائي ... إلخ )
+                        </td>
+                        <td>إدارة الخدمات المساندة</td>
+                        <td><a href="#" class="details-link">تفاصيل</a></td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>221201
+                        </td>
+                        <td>استهلاك كهرباء وماء وغاز
+                        </td>
+                        <td>يشمل استهلاك الماء والكهرباء والغاز للوحدات الحكومية ومرافقها ، بالإضافة إلى قيمة المياه
+                            العذبه الموردة بموجب سيارات النقل
+                        </td>
+                        <td>إدارة الخدمات المساندة</td>
+                        <td><a href="#" class="details-link">تفاصيل</a></td>
+                        <td>0</td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script src="script.js"></script>
+    <script>
+        // Navbar functionality
+        document.addEventListener('DOMContentLoaded', function () {
+            const navbarToggle = document.getElementById('navbarToggle');
+            const navbarMenu = document.getElementById('navbarMenu');
+
+            if (navbarToggle && navbarMenu) {
+                navbarToggle.addEventListener('click', function () {
+                    navbarMenu.classList.toggle('active');
+                });
+
+                // Close navbar when clicking outside
+                document.addEventListener('click', function (e) {
+                    if (!navbarMenu.contains(e.target) && !navbarToggle.contains(e.target)) {
+                        navbarMenu.classList.remove('active');
+                    }
+                });
+
+                // Close navbar when clicking on a link
+                const navLinks = navbarMenu.querySelectorAll('.nav-link');
+                navLinks.forEach(link => {
+                    link.addEventListener('click', function () {
+                        navbarMenu.classList.remove('active');
+                    });
+                });
+            }
+        });
+
+        // Logout function for navbar
+        function logout() {
+            // Clear stored data
+            localStorage.removeItem('rememberedUsername');
+
+            // Show success message
+            showLogoutMessage();
+
+            // Redirect to login page
+            setTimeout(() => {
+                window.location.href = 'index.html';
+            }, 1500);
+        }
+    </script>
+</body>
+
+</html>

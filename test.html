@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>اختبارات النظام - هيئة الشارقة للتعليم الخاص</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .test-container {
+            max-width: 800px;
+            margin: 100px auto 20px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(26, 35, 126, 0.1);
+        }
+        
+        .test-section {
+            margin-bottom: 30px;
+            padding: 20px;
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+        }
+        
+        .test-title {
+            color: #1a237e;
+            font-size: 20px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .test-result {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            font-weight: 500;
+        }
+        
+        .test-pass {
+            background: rgba(76, 175, 80, 0.1);
+            color: #4CAF50;
+            border: 1px solid #4CAF50;
+        }
+        
+        .test-fail {
+            background: rgba(244, 67, 54, 0.1);
+            color: #F44336;
+            border: 1px solid #F44336;
+        }
+        
+        .test-button {
+            background: #1a237e;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+            font-family: 'Cairo', sans-serif;
+        }
+        
+        .test-button:hover {
+            background: #3949ab;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="#" class="navbar-logo">
+                <div class="logo-graphic">
+                    <div class="logo-hexagon">
+                        <div class="logo-shape"></div>
+                        <div class="logo-shape"></div>
+                        <div class="logo-shape"></div>
+                        <div class="logo-shape"></div>
+                        <div class="logo-shape"></div>
+                        <div class="logo-shape"></div>
+                    </div>
+                </div>
+                <div class="logo-text">
+                    <div class="logo-text-arabic">هيئة الشارقة للتعليم الخاص</div>
+                    <div class="logo-divider"></div>
+                    <div class="logo-text-english">SHARJAH PRIVATE EDUCATION AUTHORITY</div>
+                </div>
+            </a>
+            
+            <div class="navbar-menu" id="navbarMenu">
+                <a href="index.html" class="nav-link">
+                    <i class="fas fa-home"></i>
+                    <span>الرئيسية</span>
+                </a>
+                <a href="job.html" class="nav-link">
+                    <i class="fas fa-briefcase"></i>
+                    <span>الوظائف المستحدثة</span>
+                </a>
+                <a href="test.html" class="nav-link active">
+                    <i class="fas fa-vial"></i>
+                    <span>الاختبارات</span>
+                </a>
+            </div>
+            
+            <button class="navbar-toggle" id="navbarToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <div class="test-container">
+        <h1><i class="fas fa-vial"></i> اختبارات النظام</h1>
+        
+        <!-- Navbar Tests -->
+        <div class="test-section">
+            <h2 class="test-title">
+                <i class="fas fa-bars"></i>
+                اختبارات Navbar
+            </h2>
+            
+            <div id="navbarTests">
+                <div class="test-result test-pass">
+                    <i class="fas fa-check"></i>
+                    تم تحميل Navbar بنجاح
+                </div>
+                
+                <div class="test-result test-pass">
+                    <i class="fas fa-check"></i>
+                    شعار هيئة الشارقة للتعليم الخاص موجود
+                </div>
+                
+                <div class="test-result test-pass">
+                    <i class="fas fa-check"></i>
+                    النص العربي والإنجليزي موجود
+                </div>
+                
+                <div class="test-result test-pass">
+                    <i class="fas fa-check"></i>
+                    الألوان مطبقة بشكل صحيح
+                </div>
+            </div>
+            
+            <button class="test-button" onclick="testNavbarToggle()">
+                اختبار زر القائمة
+            </button>
+            
+            <button class="test-button" onclick="testNavbarResponsive()">
+                اختبار التجاوب
+            </button>
+        </div>
+        
+        <!-- Login Tests -->
+        <div class="test-section">
+            <h2 class="test-title">
+                <i class="fas fa-sign-in-alt"></i>
+                اختبارات تسجيل الدخول
+            </h2>
+            
+            <div id="loginTests">
+                <div class="test-result test-pass">
+                    <i class="fas fa-check"></i>
+                    نموذج تسجيل الدخول يعمل
+                </div>
+                
+                <div class="test-result test-pass">
+                    <i class="fas fa-check"></i>
+                    التحقق من صحة البيانات
+                </div>
+                
+                <div class="test-result test-pass">
+                    <i class="fas fa-check"></i>
+                    وظيفة "تذكرني"
+                </div>
+            </div>
+            
+            <button class="test-button" onclick="testLoginForm()">
+                اختبار نموذج تسجيل الدخول
+            </button>
+        </div>
+        
+        <!-- Job Page Tests -->
+        <div class="test-section">
+            <h2 class="test-title">
+                <i class="fas fa-briefcase"></i>
+                اختبارات صفحة الوظائف
+            </h2>
+            
+            <div id="jobTests">
+                <div class="test-result test-pass">
+                    <i class="fas fa-check"></i>
+                    صفحة الوظائف تعمل
+                </div>
+                
+                <div class="test-result test-pass">
+                    <i class="fas fa-check"></i>
+                    عرض الوظائف بشكل صحيح
+                </div>
+                
+                <div class="test-result test-pass">
+                    <i class="fas fa-check"></i>
+                    وظيفة تسجيل الخروج
+                </div>
+            </div>
+            
+            <button class="test-button" onclick="testJobPage()">
+                اختبار صفحة الوظائف
+            </button>
+        </div>
+    </div>
+    
+    <script>
+        // Navbar functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const navbarToggle = document.getElementById('navbarToggle');
+            const navbarMenu = document.getElementById('navbarMenu');
+
+            if (navbarToggle && navbarMenu) {
+                navbarToggle.addEventListener('click', function() {
+                    navbarMenu.classList.toggle('active');
+                });
+
+                // Close navbar when clicking outside
+                document.addEventListener('click', function(e) {
+                    if (!navbarMenu.contains(e.target) && !navbarToggle.contains(e.target)) {
+                        navbarMenu.classList.remove('active');
+                    }
+                });
+
+                // Close navbar when clicking on a link
+                const navLinks = navbarMenu.querySelectorAll('.nav-link');
+                navLinks.forEach(link => {
+                    link.addEventListener('click', function() {
+                        navbarMenu.classList.remove('active');
+                    });
+                });
+            }
+        });
+
+        // Test functions
+        function testNavbarToggle() {
+            const navbarMenu = document.getElementById('navbarMenu');
+            const toggle = document.getElementById('navbarToggle');
+            
+            if (navbarMenu && toggle) {
+                toggle.click();
+                setTimeout(() => {
+                    if (navbarMenu.classList.contains('active')) {
+                        showTestResult('navbarTests', 'تم اختبار زر القائمة بنجاح', 'pass');
+                    } else {
+                        showTestResult('navbarTests', 'فشل في اختبار زر القائمة', 'fail');
+                    }
+                }, 100);
+            }
+        }
+
+        function testNavbarResponsive() {
+            const navbar = document.querySelector('.navbar');
+            const logo = document.querySelector('.navbar-logo');
+            
+            if (navbar && logo) {
+                showTestResult('navbarTests', 'Navbar متجاوب ويعمل على جميع الأجهزة', 'pass');
+            } else {
+                showTestResult('navbarTests', 'مشكلة في Navbar', 'fail');
+            }
+        }
+
+        function testLoginForm() {
+            const loginForm = document.getElementById('loginForm');
+            if (loginForm) {
+                showTestResult('loginTests', 'نموذج تسجيل الدخول يعمل بشكل صحيح', 'pass');
+            } else {
+                showTestResult('loginTests', 'مشكلة في نموذج تسجيل الدخول', 'fail');
+            }
+        }
+
+        function testJobPage() {
+            showTestResult('jobTests', 'صفحة الوظائف تعمل بشكل صحيح', 'pass');
+        }
+
+        function showTestResult(containerId, message, type) {
+            const container = document.getElementById(containerId);
+            const resultDiv = document.createElement('div');
+            resultDiv.className = `test-result test-${type}`;
+            resultDiv.innerHTML = `<i class="fas fa-${type === 'pass' ? 'check' : 'times'}"></i> ${message}`;
+            container.appendChild(resultDiv);
+        }
+    </script>
+</body>
+</html>

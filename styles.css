@@ -1,0 +1,783 @@
+/* إعدادات عامة */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Cairo', sans-serif;
+    background: linear-gradient(135deg, #1a237e 0%, #3949ab 50%, #5c6bc0 100%);
+    min-height: 100vh;
+    direction: rtl;
+    padding-top: 70px; /* Space for fixed navbar */
+}
+
+/* Body styles for login page (no navbar) */
+body.login-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    padding-top: 0;
+}
+
+/* Navbar Styles */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    z-index: 1000;
+    padding: 6px 0;
+    box-shadow: 0 4px 20px rgba(26, 35, 126, 0.1);
+}
+
+.navbar-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navbar-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: inherit;
+}
+
+.logo-graphic {
+    width: 50px;
+    height: 50px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo-hexagon {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform: rotate(30deg);
+}
+
+.logo-shape {
+    position: absolute;
+    width: 25px;
+    height: 16px;
+    background: linear-gradient(135deg, #2196F3, #1976D2);
+    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+    transform-origin: center;
+}
+
+.logo-shape:nth-child(1) {
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(135deg, #2196F3, #1976D2);
+}
+
+.logo-shape:nth-child(2) {
+    top: 12px;
+    right: 0;
+    transform: rotate(60deg);
+    background: linear-gradient(135deg, #1565C0, #0D47A1);
+}
+
+.logo-shape:nth-child(3) {
+    bottom: 12px;
+    right: 0;
+    transform: rotate(120deg);
+    background: linear-gradient(135deg, #2196F3, #1976D2);
+}
+
+.logo-shape:nth-child(4) {
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%) rotate(180deg);
+    background: linear-gradient(135deg, #1565C0, #0D47A1);
+}
+
+.logo-shape:nth-child(5) {
+    bottom: 12px;
+    left: 0;
+    transform: rotate(240deg);
+    background: linear-gradient(135deg, #2196F3, #1976D2);
+}
+
+.logo-shape:nth-child(6) {
+    top: 12px;
+    left: 0;
+    transform: rotate(300deg);
+    background: linear-gradient(135deg, #1565C0, #0D47A1);
+}
+
+.logo-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+}
+
+.logo-text-arabic {
+    font-size: 14px;
+    font-weight: 600;
+    color: #333;
+    line-height: 1.1;
+}
+
+.logo-text-english {
+    font-size: 10px;
+    font-weight: 500;
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+}
+
+.logo-divider {
+    width: 100%;
+    height: 1px;
+    background: #333;
+    margin: 0px 0;
+}
+
+.navbar-menu {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.navbar-menu a {
+    color: #333;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 5px 10px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 13px;
+}
+
+.navbar-menu a:hover {
+    background: rgba(26, 35, 126, 0.1);
+    color: #1a237e;
+}
+
+.navbar-menu a.active {
+    background: rgba(26, 35, 126, 0.15);
+    color: #1a237e;
+}
+
+.navbar-menu a i {
+    font-size: 15px;
+}
+
+.navbar-menu a span {
+    font-size: 13px;
+}
+
+.navbar-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 18px;
+    color: #333;
+    cursor: pointer;
+    padding: 6px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.navbar-toggle:hover {
+    background: rgba(26, 35, 126, 0.1);
+}
+
+/* Responsive Navbar */
+@media (max-width: 768px) {
+    .navbar-container {
+        padding: 0 15px;
+    }
+    
+    .logo-text-arabic {
+        font-size: 12px;
+    }
+    
+    .logo-text-english {
+        font-size: 8px;
+    }
+    
+    .logo-graphic {
+        width: 45px;
+        height: 45px;
+    }
+    
+    .navbar-menu {
+        position: fixed;
+        top: 70px;
+        right: -100%;
+        width: 230px;
+        height: calc(100vh - 70px);
+        background: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(20px);
+        flex-direction: column;
+        padding: 16px;
+        transition: right 0.3s ease;
+        box-shadow: -5px 0 20px rgba(26, 35, 126, 0.1);
+    }
+    
+    .navbar-menu.active {
+        right: 0;
+    }
+    
+    .navbar-toggle {
+        display: block;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo-text-arabic {
+        font-size: 10px;
+    }
+    
+    .logo-text-english {
+        font-size: 7px;
+    }
+    
+    .logo-graphic {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .navbar-logo {
+        gap: 6px;
+    }
+}
+
+/* حاوي تسجيل الدخول */
+.login-container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* بطاقة تسجيل الدخول */
+.login-card {
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(20px);
+    border-radius: 20px;
+    padding: 40px;
+    width: 100%;
+    max-width: 450px;
+    box-shadow: 0 20px 60px rgba(26, 35, 126, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    position: relative;
+    z-index: 10;
+    animation: slideUp 0.8s ease-out;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* رأس صفحة تسجيل الدخول */
+.login-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.logo {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, #1a237e, #3949ab);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    box-shadow: 0 10px 30px rgba(26, 35, 126, 0.4);
+}
+
+.logo i {
+    font-size: 35px;
+    color: white;
+}
+
+.login-header h1 {
+    color: #333;
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.login-header p {
+    color: #666;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+/* نموذج تسجيل الدخول */
+.login-form {
+    margin-bottom: 30px;
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #333;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-wrapper i {
+    position: absolute;
+    right: 15px;
+    color: #999;
+    font-size: 16px;
+    z-index: 2;
+}
+
+.input-wrapper input {
+    width: 100%;
+    padding: 15px 50px 15px 15px;
+    border: 2px solid #e1e1e1;
+    border-radius: 12px;
+    font-size: 16px;
+    font-family: 'Cairo', sans-serif;
+    transition: all 0.3s ease;
+    background: #fafafa;
+}
+
+.input-wrapper input:focus {
+    outline: none;
+    border-color: #3949ab;
+    background: white;
+    box-shadow: 0 0 0 3px rgba(57, 73, 171, 0.1);
+}
+
+.toggle-password {
+    position: absolute;
+    left: 15px;
+    background: none;
+    border: none;
+    color: #999;
+    cursor: pointer;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+.toggle-password:hover {
+    color: #3949ab;
+}
+
+/* خيارات النموذج */
+.form-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.remember-me {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-size: 14px;
+    color: #666;
+}
+
+.remember-me input[type="checkbox"] {
+    display: none;
+}
+
+.checkmark {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    margin-left: 8px;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.remember-me input[type="checkbox"]:checked + .checkmark {
+    background: #3949ab;
+    border-color: #3949ab;
+}
+
+.remember-me input[type="checkbox"]:checked + .checkmark::after {
+    content: '\2713';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.forgot-password {
+    color: #3949ab;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.forgot-password:hover {
+    color: #1a237e;
+    text-decoration: underline;
+}
+
+/* زر تسجيل الدخول */
+.login-btn {
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(135deg, #1a237e, #3949ab);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    font-family: 'Cairo', sans-serif;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    box-shadow: 0 5px 15px rgba(26, 35, 126, 0.4);
+}
+
+.login-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(26, 35, 126, 0.5);
+}
+
+.login-btn:active {
+    transform: translateY(0);
+}
+
+/* تذييل تسجيل الدخول */
+.login-footer {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+}
+
+.login-footer p {
+    color: #666;
+    font-size: 14px;
+}
+
+.login-footer a {
+    color: #3949ab;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.login-footer a:hover {
+    color: #1a237e;
+    text-decoration: underline;
+}
+
+/* الأشكال الخلفية */
+.background-shapes {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.shape {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.08);
+    animation: float 6s ease-in-out infinite;
+}
+
+.shape-1 {
+    width: 200px;
+    height: 200px;
+    top: 10%;
+    right: 10%;
+    animation-delay: 0s;
+}
+
+.shape-2 {
+    width: 150px;
+    height: 150px;
+    bottom: 20%;
+    left: 15%;
+    animation-delay: 2s;
+}
+
+.shape-3 {
+    width: 100px;
+    height: 100px;
+    top: 60%;
+    right: 20%;
+    animation-delay: 4s;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-20px) rotate(180deg);
+    }
+}
+
+/* تصميم متجاوب */
+@media (max-width: 768px) {
+    .login-card {
+        margin: 20px;
+        padding: 30px 25px;
+        max-width: none;
+    }
+    
+    .login-header h1 {
+        font-size: 24px;
+    }
+    
+    .logo {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .logo i {
+        font-size: 25px;
+    }
+    
+    .form-options {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 15px;
+    }
+    
+    .remember-me {
+        justify-content: center;
+    }
+    
+    .forgot-password {
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .login-card {
+        margin: 10px;
+        padding: 25px 20px;
+    }
+    
+    .input-wrapper input {
+        padding: 12px 45px 12px 12px;
+        font-size: 14px;
+    }
+    
+    .login-btn {
+        padding: 12px;
+        font-size: 14px;
+    }
+}
+
+/* Side Navigation */
+.sidenav {
+    position: fixed;
+    top: 0;
+    right: -280px;
+    width: 280px;
+    height: 100vh;
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(20px);
+    border-left: 1px solid rgba(255, 255, 255, 0.2);
+    z-index: 1000;
+    transition: right 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    box-shadow: -5px 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.sidenav.active {
+    right: 0;
+}
+
+.sidenav-header {
+    padding: 30px 20px;
+    text-align: center;
+    border-bottom: 1px solid rgba(26, 35, 126, 0.1);
+}
+
+.sidenav-logo {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #1a237e, #3949ab);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 15px;
+    box-shadow: 0 5px 15px rgba(26, 35, 126, 0.3);
+}
+
+.sidenav-logo i {
+    font-size: 24px;
+    color: white;
+}
+
+.sidenav-header h3 {
+    color: #1a237e;
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0;
+}
+
+.sidenav-menu {
+    flex: 1;
+    padding: 20px 0;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px 25px;
+    color: #666;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border-right: 3px solid transparent;
+}
+
+.nav-item:hover {
+    background: rgba(26, 35, 126, 0.05);
+    color: #1a237e;
+    border-right-color: #3949ab;
+}
+
+.nav-item.active {
+    background: rgba(26, 35, 126, 0.1);
+    color: #1a237e;
+    border-right-color: #1a237e;
+    font-weight: 600;
+}
+
+.nav-item i {
+    font-size: 18px;
+    width: 20px;
+    text-align: center;
+}
+
+.nav-item span {
+    font-size: 16px;
+}
+
+.sidenav-footer {
+    padding: 20px;
+    border-top: 1px solid rgba(26, 35, 126, 0.1);
+}
+
+.sidenav-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.95);
+    border: none;
+    border-radius: 50%;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    z-index: 1001;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sidenav-toggle:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.sidenav-toggle i {
+    font-size: 20px;
+    color: #1a237e;
+}
+
+/* تحسينات إضافية للتفاعل */
+.form-group {
+    position: relative;
+}
+
+.input-wrapper input:focus + .input-icon {
+    color: #4CAF50;
+}
+
+.login-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%);
+    border-radius: 20px;
+    z-index: -1;
+}
+
+/* تأثيرات التحميل */
+.login-btn.loading {
+    pointer-events: none;
+    opacity: 0.8;
+}
+
+.login-btn.loading::after {
+    content: '';
+    width: 20px;
+    height: 20px;
+    border: 2px solid transparent;
+    border-top: 2px solid white;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-right: 10px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}

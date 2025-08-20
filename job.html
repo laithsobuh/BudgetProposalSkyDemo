@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الوظائف المستحدثة - هيئة الشارقة للتعليم الخاص</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="#" class="navbar-logo">
+                <div class="logo-graphic">
+                    <div class="logo-hexagon">
+                        <div class="logo-shape"></div>
+                        <div class="logo-shape"></div>
+                        <div class="logo-shape"></div>
+                        <div class="logo-shape"></div>
+                        <div class="logo-shape"></div>
+                        <div class="logo-shape"></div>
+                    </div>
+                </div>
+                <div class="logo-text">
+                    <div class="logo-text-arabic">هيئة الشارقة للتعليم الخاص</div>
+                    <div class="logo-divider"></div>
+                    <div class="logo-text-english">SHARJAH PRIVATE EDUCATION AUTHORITY</div>
+                </div>
+            </a>
+
+            <div class="navbar-menu" id="navbarMenu">
+              
+                <a href="basicItems.html" class="nav-link">
+                    <i class="fas fa-list-alt"></i>
+                    <span>البنود الأساسية</span>
+                </a>
+                <a href="job.html" class="nav-link active">
+                    <i class="fas fa-briefcase"></i>
+                    <span>الوظائف المستحدثة</span>
+                </a>
+               
+            </div>
+
+            <button class="navbar-toggle" id="navbarToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <style>
+        /* تنسيق خاص بصفحة الوظائف */
+        .job-container {
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .job-header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(26, 35, 126, 0.1);
+        }
+
+        .job-header h1 {
+            color: #1a237e;
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .job-header p {
+            color: #666;
+            font-size: 18px;
+        }
+
+        .job-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .job-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 8px 25px rgba(26, 35, 126, 0.1);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .job-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(26, 35, 126, 0.2);
+        }
+
+        .job-card h3 {
+            color: #1a237e;
+            font-size: 20px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .job-card h3 i {
+            color: #3949ab;
+            font-size: 18px;
+        }
+
+        .job-card p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .job-status {
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .status-active {
+            background: rgba(76, 175, 80, 0.1);
+            color: #4CAF50;
+        }
+
+        .status-pending {
+            background: rgba(255, 193, 7, 0.1);
+            color: #FFC107;
+        }
+
+        .status-completed {
+            background: rgba(33, 150, 243, 0.1);
+            color: #2196F3;
+        }
+
+        .job-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+        }
+
+        .job-date {
+            color: #999;
+            font-size: 14px;
+        }
+
+        .job-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #1a237e, #3949ab);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(26, 35, 126, 0.3);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.9);
+            color: #1a237e;
+            border: 1px solid #1a237e;
+        }
+
+        .btn-secondary:hover {
+            background: #1a237e;
+            color: white;
+        }
+
+        .stats-section {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 25px rgba(26, 35, 126, 0.1);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 20px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, rgba(26, 35, 126, 0.05), rgba(57, 73, 171, 0.05));
+        }
+
+        .stat-number {
+            font-size: 32px;
+            font-weight: 700;
+            color: #1a237e;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            color: #666;
+            font-size: 14px;
+        }
+
+        /* تنسيق تفاصيل الرأس */
+        .header-details {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 8px 25px rgba(26, 35, 126, 0.1);
+        }
+
+        .details-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .detail-item {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .detail-item label {
+            font-weight: 600;
+            color: #1a237e;
+            font-size: 14px;
+        }
+
+        .detail-item span {
+            color: #666;
+            font-size: 16px;
+            padding: 8px 12px;
+            background: rgba(26, 35, 126, 0.05);
+            border-radius: 6px;
+            border: 1px solid rgba(26, 35, 126, 0.1);
+        }
+
+        /* تنسيق قسم الفلتر */
+        .filter-section {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 8px 25px rgba(26, 35, 126, 0.1);
+        }
+
+        .filter-box {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .filter-box label {
+            font-weight: 600;
+            color: #1a237e;
+            font-size: 14px;
+            white-space: nowrap;
+        }
+
+        .department-select {
+            padding: 10px 15px;
+            border: 1px solid rgba(26, 35, 126, 0.2);
+            border-radius: 8px;
+            background: white;
+            color: #1a237e;
+            font-size: 14px;
+            min-width: 200px;
+            cursor: pointer;
+        }
+
+        .department-select:focus {
+            outline: none;
+            border-color: #3949ab;
+            box-shadow: 0 0 0 2px rgba(57, 73, 171, 0.1);
+        }
+
+        /* تنسيق جدول الوظائف */
+        .table-container {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 25px rgba(26, 35, 126, 0.1);
+            overflow-x: auto;
+        }
+
+        .jobs-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-family: 'Cairo', sans-serif;
+            direction: rtl;
+        }
+
+        .jobs-table thead th {
+            background: linear-gradient(135deg, #1a237e, #3949ab);
+            color: white;
+            padding: 15px 12px;
+            text-align: right;
+            font-weight: 600;
+            font-size: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+        }
+
+        .jobs-table thead th:first-child {
+            width: 60px;
+            text-align: center;
+        }
+
+        .jobs-table thead th i {
+            margin-left: 8px;
+            font-size: 12px;
+            opacity: 0.8;
+        }
+
+        .jobs-table tbody td {
+            padding: 12px;
+            border: 1px solid #e0e0e0;
+            text-align: right;
+            font-size: 13px;
+            line-height: 1.5;
+            vertical-align: middle;
+        }
+
+        .jobs-table tbody td:first-child {
+            text-align: center;
+            font-weight: 600;
+            color: #1a237e;
+            background: rgba(26, 35, 126, 0.05);
+        }
+
+        .jobs-table tbody tr:nth-child(even) {
+            background-color: rgba(26, 35, 126, 0.02);
+        }
+
+        .jobs-table tbody tr:hover {
+            background-color: rgba(26, 35, 126, 0.05);
+            transition: background-color 0.3s ease;
+        }
+
+        .department-dropdown {
+            width: 100%;
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            background: white;
+            color: #666;
+            font-size: 13px;
+            cursor: pointer;
+        }
+
+        .department-dropdown:focus {
+            outline: none;
+            border-color: #3949ab;
+            box-shadow: 0 0 0 2px rgba(57, 73, 171, 0.1);
+        }
+
+        @media (max-width: 768px) {
+            .job-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .job-header h1 {
+                font-size: 24px;
+            }
+
+            .job-meta {
+                flex-direction: column;
+                gap: 10px;
+                align-items: stretch;
+            }
+
+            .details-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .filter-box {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .department-select {
+                min-width: auto;
+                width: 100%;
+            }
+
+            .table-container {
+                padding: 15px;
+                margin: 0 10px 20px 10px;
+            }
+
+            .jobs-table {
+                font-size: 12px;
+            }
+
+            .jobs-table thead th,
+            .jobs-table tbody td {
+                padding: 8px 6px;
+                font-size: 11px;
+            }
+
+            .department-dropdown {
+                font-size: 11px;
+                padding: 6px 8px;
+            }
+        }
+    </style>
+    </head>
+
+    <body>
+        <!-- Side Navigation -->
+        <div class="sidenav" id="sidenav">
+            <div class="sidenav-header">
+                <div class="sidenav-logo">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <h3>نظام الميزانية</h3>
+            </div>
+
+            <nav class="sidenav-menu">
+
+                <a href="job.html" class="nav-item active">
+                    <i class="fas fa-briefcase"></i>
+                    <span>الوظائف المستحدثة</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <i class="fas fa-chart-pie"></i>
+                    <span>التقارير</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <i class="fas fa-users"></i>
+                    <span>المستخدمين</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <i class="fas fa-cog"></i>
+                    <span>الإعدادات</span>
+                </a>
+            </nav>
+
+            <div class="sidenav-footer">
+                <a href="#" class="nav-item">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>تسجيل الخروج</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Toggle Button -->
+        <button class="sidenav-toggle" id="sidenavToggle">
+            <i class="fas fa-bars"></i>
+        </button>
+
+        <div class="job-container">
+            <!-- Header Details Section -->
+            <div class="header-details">
+                <div class="details-grid">
+                    <div class="detail-item">
+                        <label>اسم الادارة:</label>
+                        <span>0</span>
+                    </div>
+                    <div class="detail-item">
+                        <label>رقم البند:</label>
+                        <span>-</span>
+                    </div>
+                    <div class="detail-item">
+                        <label>اسم البند:</label>
+                        <span>الوظائف المستحدثة</span>
+                    </div>
+                    <div class="detail-item">
+                        <label>الوصف:</label>
+                        <span>الوظائف المستحدثة</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Department Filter Section -->
+            <div class="filter-section">
+                <div class="filter-box">
+                    <label>الادارة المختصة بهذا البند:</label>
+                    <select class="department-select">
+                        <option>جميع الادارات</option>
+                        <option>إدارة الخدمات المساندة</option>
+                        <option>إدارة تقنية المعلومات</option>
+                        <option>إدارة الأمن والسلامة</option>
+                        <option>إدارة الموارد البشرية</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Jobs Table -->
+            <div class="table-container">
+                <table class="jobs-table">
+                    <thead>
+                        <tr>
+                            <th>م</th>
+                            <th>
+                                <i class="fas fa-sort-down"></i>
+                                اسم القسم
+                            </th>
+                            <th>
+                                <i class="fas fa-sort-down"></i>
+                                المسمى الوظيفي
+                            </th>
+                            <th>الدرجة</th>
+                            <th>سبب استحداث الوظيفية</th>
+                            <th>ملاحظات</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>
+                                <select class="department-dropdown">
+                                    <option>اختر القسم</option>
+                                    <option>إدارة الخدمات المساندة</option>
+                                    <option>إدارة تقنية المعلومات</option>
+                                    <option>إدارة الأمن والسلامة</option>
+                                </select>
+                            </td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>
+                                <select class="department-dropdown">
+                                    <option>اختر القسم</option>
+                                    <option>إدارة الخدمات المساندة</option>
+                                    <option>إدارة تقنية المعلومات</option>
+                                    <option>إدارة الأمن والسلامة</option>
+                                </select>
+                            </td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>
+                                <select class="department-dropdown">
+                                    <option>اختر القسم</option>
+                                    <option>إدارة الخدمات المساندة</option>
+                                    <option>إدارة تقنية المعلومات</option>
+                                    <option>إدارة الأمن والسلامة</option>
+                                </select>
+                            </td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>
+                                <select class="department-dropdown">
+                                    <option>اختر القسم</option>
+                                    <option>إدارة الخدمات المساندة</option>
+                                    <option>إدارة تقنية المعلومات</option>
+                                    <option>إدارة الأمن والسلامة</option>
+                                </select>
+                            </td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>
+                                <select class="department-dropdown">
+                                    <option>اختر القسم</option>
+                                    <option>إدارة الخدمات المساندة</option>
+                                    <option>إدارة تقنية المعلومات</option>
+                                    <option>إدارة الأمن والسلامة</option>
+                                </select>
+                            </td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td>
+                                <select class="department-dropdown">
+                                    <option>اختر القسم</option>
+                                    <option>إدارة الخدمات المساندة</option>
+                                    <option>إدارة تقنية المعلومات</option>
+                                    <option>إدارة الأمن والسلامة</option>
+                                </select>
+                            </td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td>
+                                <select class="department-dropdown">
+                                    <option>اختر القسم</option>
+                                    <option>إدارة الخدمات المساندة</option>
+                                    <option>إدارة تقنية المعلومات</option>
+                                    <option>إدارة الأمن والسلامة</option>
+                                </select>
+                            </td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>8</td>
+                            <td>
+                                <select class="department-dropdown">
+                                    <option>اختر القسم</option>
+                                    <option>إدارة الخدمات المساندة</option>
+                                    <option>إدارة تقنية المعلومات</option>
+                                    <option>إدارة الأمن والسلامة</option>
+                                </select>
+                            </td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>9</td>
+                            <td>
+                                <select class="department-dropdown">
+                                    <option>اختر القسم</option>
+                                    <option>إدارة الخدمات المساندة</option>
+                                    <option>إدارة تقنية المعلومات</option>
+                                    <option>إدارة الأمن والسلامة</option>
+                                </select>
+                            </td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>10</td>
+                            <td>
+                                <select class="department-dropdown">
+                                    <option>اختر القسم</option>
+                                    <option>إدارة الخدمات المساندة</option>
+                                    <option>إدارة تقنية المعلومات</option>
+                                    <option>إدارة الأمن والسلامة</option>
+                                </select>
+                            </td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>11</td>
+                            <td>
+                                <select class="department-dropdown">
+                                    <option>اختر القسم</option>
+                                    <option>إدارة الخدمات المساندة</option>
+                                    <option>إدارة تقنية المعلومات</option>
+                                    <option>إدارة الأمن والسلامة</option>
+                                </select>
+                            </td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+
+
+            <script src="script.js"></script>
+            <script>
+                // وظائف خاصة بصفحة الوظائف
+                document.addEventListener('DOMContentLoaded', function () {
+                    const sidenav = document.getElementById('sidenav');
+                    const sidenavToggle = document.getElementById('sidenavToggle');
+
+                    if (sidenavToggle && sidenav) {
+                        sidenavToggle.addEventListener('click', function () {
+                            sidenav.classList.toggle('active');
+                        });
+
+                        // إغلاق sidenav عند النقر خارجه
+                        document.addEventListener('click', function (e) {
+                            if (!sidenav.contains(e.target) && !sidenavToggle.contains(e.target)) {
+                                sidenav.classList.remove('active');
+                            }
+                        });
+
+                        // إغلاق sidenav عند النقر على أي رابط
+                        const navItems = sidenav.querySelectorAll('.nav-item');
+                        navItems.forEach(item => {
+                            item.addEventListener('click', function () {
+                                sidenav.classList.remove('active');
+                            });
+                        });
+
+                        // وظيفة تسجيل الخروج
+                        const logoutBtn = sidenav.querySelector('.nav-item[href="#"]:last-child');
+                        if (logoutBtn) {
+                            logoutBtn.addEventListener('click', function (e) {
+                                e.preventDefault();
+
+                                // مسح البيانات المحفوظة
+                                localStorage.removeItem('rememberedUsername');
+
+                                // إظهار رسالة نجاح
+                                showLogoutMessage();
+
+                                // توجيه المستخدم إلى صفحة تسجيل الدخول
+                                setTimeout(() => {
+                                    window.location.href = 'index.html';
+                                }, 1500);
+                            });
+                        }
+                    }
+                });
+
+                // وظيفة إظهار رسالة تسجيل الخروج
+                function showLogoutMessage() {
+                    const logoutDiv = document.createElement('div');
+                    logoutDiv.className = 'logout-toast';
+                    logoutDiv.innerHTML = '<i class="fas fa-sign-out-alt"></i> تم تسجيل الخروج بنجاح!';
+                    logoutDiv.style.cssText = `
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                background: rgba(255, 255, 255, 0.95);
+                color: #1a237e;
+                padding: 15px 20px;
+                border-radius: 8px;
+                box-shadow: 0 4px 12px rgba(26, 35, 126, 0.2);
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                z-index: 1000;
+                animation: slideInFromRight 0.5s ease;
+                border-right: 4px solid #3949ab;
+                backdrop-filter: blur(10px);
+                font-family: 'Cairo', sans-serif;
+                font-weight: 500;
+            `;
+
+                    document.body.appendChild(logoutDiv);
+
+                    setTimeout(() => {
+                        logoutDiv.style.animation = 'slideOutToRight 0.5s ease';
+                        setTimeout(() => {
+                            logoutDiv.remove();
+                        }, 500);
+                    }, 1500);
+                }
+
+                // إضافة تأثيرات CSS للرسائل
+                const style = document.createElement('style');
+                style.textContent = `
+            @keyframes slideInFromRight {
+                from {
+                    opacity: 0;
+                    transform: translateX(100%);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateX(0);
+                }
+            }
+            
+            @keyframes slideOutToRight {
+                from {
+                    opacity: 1;
+                    transform: translateX(0);
+                }
+                to {
+                    opacity: 0;
+                    transform: translateX(100%);
+                }
+            }
+        `;
+                document.head.appendChild(style);
+
+                // Navbar functionality
+                document.addEventListener('DOMContentLoaded', function () {
+                    const navbarToggle = document.getElementById('navbarToggle');
+                    const navbarMenu = document.getElementById('navbarMenu');
+
+                    if (navbarToggle && navbarMenu) {
+                        navbarToggle.addEventListener('click', function () {
+                            navbarMenu.classList.toggle('active');
+                        });
+
+                        // Close navbar when clicking outside
+                        document.addEventListener('click', function (e) {
+                            if (!navbarMenu.contains(e.target) && !navbarToggle.contains(e.target)) {
+                                navbarMenu.classList.remove('active');
+                            }
+                        });
+
+                        // Close navbar when clicking on a link
+                        const navLinks = navbarMenu.querySelectorAll('.nav-link');
+                        navLinks.forEach(link => {
+                            link.addEventListener('click', function () {
+                                navbarMenu.classList.remove('active');
+                            });
+                        });
+                    }
+                });
+
+                // Logout function for navbar
+                function logout() {
+                    // Clear stored data
+                    localStorage.removeItem('rememberedUsername');
+
+                    // Show success message
+                    showLogoutMessage();
+
+                    // Redirect to login page
+                    setTimeout(() => {
+                        window.location.href = 'index.html';
+                    }, 1500);
+                }
+            </script>
+    </body>
+
+</html>
